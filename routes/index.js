@@ -2,12 +2,13 @@ var recordJSON = require("../record.json");
 const mysql = require('mysql');
 // databsae connection
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "balance"
+  host: "eu-cdbr-west-02.cleardb.net",
+  user: "ba23da39bcc371",
+  password: "5f6f19c5",
+  database: "heroku_aac23df1a845576"
 });
 con.connect(function (){
+	alert("Database connected!");
 	console.log("Database Connected!");
 })
 

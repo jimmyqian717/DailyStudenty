@@ -1,0 +1,63 @@
+.currency{
+    border:none;
+    outline:none;
+    border-radius: 0;
+    height:50vh;
+    margin-top:15vh;
+    
+}
+.card-title{
+    font-family: 'Dancing Script', cursive;
+}
+.card-text, .card-title{
+    line-height:50px;
+    color:#303030;
+}
+.btn-detail{
+    transition: .5s ease;
+}
+.badge-pill, .btn-detail{
+    font-family:"Century Gothic", sans-serif;
+    font-weight:100;
+    user-select:none;
+}
+.badge-pill{
+    font-size:16px;
+    padding:8px 16px;
+    width:70px;
+    margin-right:30px!important;
+}
+.btn-detail{
+    font-size:16px;
+}
+.label-date, .label-amount{
+    width:200px;
+}
+
+
+/*Filter*/
+.custom-control-label, .input-date, .col-form-label{
+    user-select:none;
+    font-size:16px;
+}
+/* Date input label */
+.col-form-label{
+    text-align:center
+}
+.card-header{
+    user-select:none;
+    font-size:20px;
+    width:100%;
+    text-align:center;
+}
+/*Checkbox */
+.custom-control{
+    margin:20px 0;
+}
+
+.page-footer{
+    margin-top:100px;
+}
+.link-list li>a{
+    color:white!important;
+}

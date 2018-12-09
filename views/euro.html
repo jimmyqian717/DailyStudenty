@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Euro Balance</title>
+    <% include partials/head.ejs %>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="personal">Personal</a>
+                </li>
+            </ul>
+        </div> 
+    </nav>
+    <h1 class = "display-3 text-center"><%= currency %> balance</h1>
+
+    <div class="container-fluid">
+        <div class = "row">
+            <div class = "col-sm-3">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#collapseOne">Currency</a>
+                        </div>
+                        <div id="collapseOne" class="collapse">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-euro" name="Euro" value = "Euro">
+                                        <label class="custom-control-label" for="checkbox-euro">Euro</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-lei" name="Lei" value = "Lei">
+                                        <label class="custom-control-label" for="checkbox-lei">Romanian Lei</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-RMB" name="RMB" value = "RMB">
+                                        <label class="custom-control-label" for="checkbox-RMB">Chinese Yuan</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">Amount</a>
+                        </div>
+                        <div id="collapseTwo" class="collapse show">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-0to20" name="0to20" value = "0to20">
+                                        <label class="custom-control-label" for="checkbox-0to20">0 to 20</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-21to70" name="21to70" value = "21to70">
+                                        <label class="custom-control-label" for="checkbox-21to70">21 to 70</label>
+                                    </div>
+                                </div>
+                                <div class="form-check disabled">
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-70up" name="70up" value = "70up">
+                                        <label class="custom-control-label" for="checkbox-70up">70 +</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">Date</a>
+                        </div>
+                        <div id="collapseThree" class="collapse show">
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label for="date-from" class="col-form-label">From</label>
+                                    <div class="col-12 wrapping">
+                                        <input class="form-control input-date" type="date" id="date-from">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="date-to" class="col-form-label text-center">To</label>
+                                    <div class="col-12 wrapping">
+                                        <input class="form-control input-date" type="date" id="date-to">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-sm-6">
+                <form method = "get">
+                    <div class="form-group">
+                        <label for="searchBar">Search:</label>
+                        <input type="text" class="form-control" id="searchBar" placeholder="Keyword..">
+                    </div>
+                </form>
+                <ul class="list-group" id = "result">
+                    <% for (var i = 0; i < results.length; i ++){
+                        switch(results[i].Currency){
+                            case "Euro": %>
+                                 <li class="list-group-item">
+                                    <span class="badge badge-pill badge-primary"><%= results[i].Currency.toString() %></span>
+                                    <label><%= results[i].Amount.toString() %></label>
+                                    <label><%= results[i].timeDate.toString() %></label>
+                                    <button type="button" class="btn btn-outline-dark btn-detail float-right">Details</button>
+                                </li>
+                            <% break; %>
+                        <% }%>
+                    }%>
+                </ul>
+            </div>
+            <div class = "col-sm-3"></div>
+        </div>
+
+    </div>
+    <!-- Footer -->
+    <footer class="page-footer font-small bg-dark pt-4">
+        <!-- Footer Links -->
+        <div class="container-fluid text-center text-md-left">
+          <!-- Grid row -->
+          <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-12 mt-md-0 mt-3">
+              <!-- Content -->
+              <h5 class="text-uppercase text-center text-white">Financer</h5>
+              <p class = "text-white text-center">Are you a student? Do you have a relatively low or no income? Time to get your finance under control.<br>
+                I designed this webapp for all the students out there who want to track there outgoings and eliminate wastes on a daily basis.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright text-center py-3 text-white">© 2018 Copyright:
+          Longxiang Qian
+        </div>
+      </footer>
+      <% include partials/scripts.ejs %>
+</body>
+</html>
